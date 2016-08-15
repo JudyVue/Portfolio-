@@ -1,0 +1,10 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+table {
+  outline: dotted 5px orange;
+  width: 1000px;
+  font-size: 30px;
+
+}
