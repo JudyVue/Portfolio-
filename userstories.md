@@ -4,4 +4,4 @@
 
 * As the creator, I need the page to link to my social and GitHub pages, so that visitors can follow me, and I can build my audience. In addition, I'd like a few of my headshots featured on the site, and I'm still debating if I want to link to my standup comedy.
 
-* As a visitor, I want responsive design so I can view the site easily on any device without being annoyed. I want a clean setup that lets me know clearly who Judy Vue and why she is awesome. 
+* As a visitor, I want responsive design so I can view the site easily on any device without being annoyed. I want a clean setup that lets me know clearly who Judy Vue and why she is awesome.
