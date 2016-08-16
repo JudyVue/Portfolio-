@@ -6,5 +6,8 @@ table {
   outline: dotted 5px orange;
   width: 1000px;
   font-size: 30px;
+}
 
+img {
+  width: 100%
 }
