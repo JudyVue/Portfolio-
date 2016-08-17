@@ -36,6 +36,6 @@ myProjects.forEach(function(currentProject) {
 });
 
 //attaches to section in DOM
-projectsArray.forEach(function(project) {
-  $('section').append(project.toHtml());
+projectsArray.forEach(function(section) {
+  $('section').append(section.toHtml());
 });
