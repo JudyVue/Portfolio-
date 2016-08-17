@@ -4,10 +4,21 @@ body {
 
 table {
   outline: dotted 5px orange;
-  width: 1000px;
-  font-size: 30px;
+  width: 100%
+  font-size: 30%;
 }
 
 img {
   width: 100%
+}
+
+td {
+  display: block;
+}
+
+.hamburger {
+  /*display: block;*/
+  width: 3em;
+  outline: dotted 5px orange;
+  padding: 0em 0em 0em 0em;
 }
