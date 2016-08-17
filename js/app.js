@@ -32,9 +32,10 @@ myProjects.sort(function(firstElement, secondElement) {
 //pushing the results of instantiation sorts to new array
 myProjects.forEach(function(currentProject) {
   projectsArray.push(new Project(currentProject));
+  console.log(projectsArray);
 });
 
 //attaches to section in DOM
 projectsArray.forEach(function(project) {
-  $('#projectlist').append(project.toHtml());
+  $('section').append(project.toHtml());
 });
