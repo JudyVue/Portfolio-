@@ -1,31 +1,37 @@
 body {
   font-family: 'Quicksand', sans-serif;
+  background-color: #FF6A5C;
+  color: 	#F0FFF0;
 }
 
 table {
-  outline: dotted 5px orange;
+  /*outline: dotted 5px orange;*/
   width: 100%
-  font-size: 30%;
+
+}
+
+td:hover{
+  cursor: pointer;
+  outline: dotted 5px white;
+}
+
+td {
+  display: block;
+  width: 100%;
+  margin-right: 3em
+
 }
 
 img {
   width: 100%
 }
 
-td {
-  display: block;
-}
 
 .hamburger {
-  /*display: block;*/
   width: 3em;
-  /*outline: dotted 5px orange;*/
   padding: 0em 0em 0em 0em;
 }
 
-section {
-  /*outline: dotted 5px orange;*/
-}
 
 .projectlist {
   display: none;

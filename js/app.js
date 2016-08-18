@@ -48,10 +48,11 @@ $('section:gt(1)').attr('data', 'portfolio_links');
 //click function to show about section on about
 clickAbout = function(){
   $('table td:nth-child(2)').on('click', function(){
+    $('h2').text('About Me');
     $('section').removeClass('aboutmesection');
-
     $('section[data="about_section"]').show();
     $('section[data="portfolio_links"]').hide();
+
     console.log('about me section shown');
   });
 };
@@ -61,9 +62,18 @@ clickHome = function(){
   $('table td:nth-child(1)').on('click', function(){
     $('section:gt(1)').show();
     $('section[data="about_section"]').hide();
+    $('h2').text('Code 201 Projects');
     console.log('home was clicked');
+  });
+};
+
+//click function for hamburger at <400px to display the menu when clicked on
+clickHamburger = function(){
+  $('.hamburger').on('click', function(){
+    ('table').show();
   });
 };
 
 clickAbout();
 clickHome();
+clickHamburger();
