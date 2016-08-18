@@ -5,14 +5,11 @@ body {
 }
 
 table {
-  /*outline: dotted 5px orange;*/
   width: 100%
-
 }
 
 td:hover{
   cursor: pointer;
-  outline: dotted 5px white;
 }
 
 td {

@@ -60,7 +60,7 @@ clickAbout = function(){
 //click function to go home when clicking home
 clickHome = function(){
   $('table td:nth-child(1)').on('click', function(){
-    $('section:gt(1)').show();
+    $('section[data="portfolio_links"]').show();
     $('section[data="about_section"]').hide();
     $('h2').text('Code 201 Projects');
     console.log('home was clicked');
