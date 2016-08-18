@@ -3,7 +3,6 @@
   table {
     width: 100%;
     text-align: center;
-    
 
   }
 
@@ -15,9 +14,3 @@
   .hamburger {
     display: none;
   }
-
-@media only screen and (max-width: 200px){
-  td {
-    display: none;
-  }
-}

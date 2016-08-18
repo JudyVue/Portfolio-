@@ -27,6 +27,7 @@ img {
 .hamburger {
   width: 3em;
   padding: 0em 0em 0em 0em;
+  cursor: pointer;
 }
 
 

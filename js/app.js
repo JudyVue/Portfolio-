@@ -68,12 +68,11 @@ clickHome = function(){
 };
 
 //click function for hamburger at <400px to display the menu when clicked on
-clickHamburger = function(){
-  $('.hamburger').on('click', function(){
-    ('table').show();
-  });
-};
+$('.hamburger').click(function(){
+  $('table').toggle();
+});
+
+
 
 clickAbout();
 clickHome();
-clickHamburger();
