@@ -19,6 +19,18 @@ td {
 .hamburger {
   /*display: block;*/
   width: 3em;
-  outline: dotted 5px orange;
+  /*outline: dotted 5px orange;*/
   padding: 0em 0em 0em 0em;
+}
+
+section {
+  /*outline: dotted 5px orange;*/
+}
+
+.projectlist {
+  display: none;
+}
+
+.aboutmesection{
+  display: none;
 }
