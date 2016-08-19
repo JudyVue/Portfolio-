@@ -7,8 +7,6 @@ function Project (options) {
   this.dateCreated = options.dateCreated;
 }
 
-
-//refactored on 8/18/16 utilizing Handlebars
 Project.prototype.toHtml = function(){
   //calculates the #days the project was created
   this.daysAgo = parseInt((new Date() - new Date(this.dateCreated))/ 60 / 60/ 24/ 1000);
@@ -47,9 +45,11 @@ $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
 clickAbout = function(){
   $('table td:nth-child(2)').on('click', function(){
     $('h2').text('About Me');
+    $('section').removeClass('aboutmesection');
     $('section[data="about_section"]').show();
     $('section:not(.aboutmesection)').hide();
 
+    console.log($('section[data="portfolio_links"]'));
   });
 };
 
@@ -59,6 +59,8 @@ clickHome = function(){
     $('h2').text('Code 201 Projects');
     $('section[data="portfolio_links"]').show();
     $('section[data="about_section"]').hide();
+
+    console.log('home was clicked');
   });
 };
 
