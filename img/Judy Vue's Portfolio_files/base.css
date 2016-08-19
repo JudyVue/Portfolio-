@@ -1,0 +1,40 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #FF6A5C;
+  color: 	#F0FFF0;
+}
+
+table {
+  width: 100%
+}
+
+td:hover{
+  cursor: pointer;
+}
+
+td {
+  display: block;
+  width: 100%;
+  margin-right: 3em
+
+}
+
+img {
+  width: 100%
+}
+
+
+.hamburger {
+  width: 3em;
+  padding: 0em 0em 0em 0em;
+  cursor: pointer;
+}
+
+
+.projectlist {
+  display: none;
+}
+
+.aboutmesection{
+  display: none;
+}
