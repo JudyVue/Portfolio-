@@ -41,11 +41,11 @@ projectsArray.forEach(function(a) {
 //adding data attributes to my home and about sections
 $('.aboutmesection').attr('data','about_section');
 $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
-
+//MEGAN: Might as well do this in the HTML
 
 //click function to show about section on about
 clickAbout = function(){
-  $('table td:nth-child(2)').on('click', function(){
+  $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
     $('h2').text('About Me');
     $('section[data="about_section"]').show();
     $('section:not(.aboutmesection)').hide();
@@ -55,7 +55,7 @@ clickAbout = function(){
 
 //click function to go home when clicking home
 clickHome = function(){
-  $('table td:nth-child(1)').on('click', function(){
+  $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
     $('h2').text('Code 201 Projects');
     $('section[data="portfolio_links"]').show();
     $('section[data="about_section"]').hide();
