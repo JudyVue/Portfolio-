@@ -15,6 +15,9 @@
     display: none;
   }
 
+/*}*/
+/*MEGAN: you lost your closing bracket */
+/*Also, make it so your menu items dont disapear behind the view when you make the window smaller. */
 
 .hamburger {
     width: 3em;
