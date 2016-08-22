@@ -1,11 +1,12 @@
-var projectsArray = [];
+var projectView = {};
 
-function Project (options) {
-  this.title = options.title;
-  this.siteUrl = options.siteUrl;
-  this.repoUrl = options.repoUrl;
-  this.dateCreated = options.dateCreated;
+function Project (opts) {
+  for (keys in opts) {
+    this[keys] = opts[keys];
+  }
 }
+
+Project.projectsArray = [];
 
 
 //refactored on 8/18/16 utilizing Handlebars
@@ -22,20 +23,37 @@ Project.prototype.toHtml = function(){
 
 };
 
-//sorts most recent project to top
-myProjects.sort(function(firstElement, secondElement) {
-  return (new Date(secondElement.dateCreated)) - (new Date(firstElement.dateCreated));
-});
+Project.loadAll = function(inputData) {
+  inputData.sort(function(a,b){
+    return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+  }).forEach(function(ele){
+    Project.projectsArray.push(new Project(ele));
+  });
+};
 
-//pushing the results of instantiation sorts to new array
-myProjects.forEach(function(currentProject) {
-  projectsArray.push(new Project(currentProject));
-});
+Project.fetchAll = function() {
+  if (localStorage.objects) {
+    Project.loadAll(JSON.parse(localStorage.objects));
+    projectView.render();
+  } else {
+    $.getJSON ('js/objects.json', function (data) {
+      Project.loadAll(data);
+      localStorage.objects = JSON.stringify(data);
+      projectView.render();
+    });
+  }
+};
+
 
 //attaches to section in DOM
-projectsArray.forEach(function(a) {
-  $('#projectlist').append(a.toHtml());
-});
+projectView.render = function(){
+  Project.projectsArray.forEach(function(a) {
+    $('#projectlist').append(a.toHtml());
+  });
+  console.log('is render working?');
+};
+
+Project.fetchAll();
 
 
 //adding data attributes to my home and about sections
