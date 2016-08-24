@@ -1,0 +1,37 @@
+[
+   {
+        "year":2009,
+        "country":"Sierra Leone",
+        "city":"Freetown",
+        "state":"",
+        "job":"journalist"
+   },
+   {
+      "year":2011,
+      "country":"South Korea",
+      "city":"Busan",
+      "state":"",
+      "job":"English teacher"
+   },
+   {
+      "year":2012,
+      "country":"USA",
+      "city":"Burien",
+      "state":"WA",
+      "job":"Bank Teller"
+   },
+   {
+      "year":2013,
+      "country":"South Korea",
+      "city":"Wonju",
+      "state":"",
+      "job":"English Teacher"
+   },
+   {
+      "year":2014,
+      "country":"USA",
+      "city":"Seattle",
+      "state":"WA",
+      "job":"Paralegal"
+   }
+]
