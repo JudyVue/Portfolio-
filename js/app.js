@@ -8,11 +8,6 @@
     }
   }
 
-  function FunFacts (opts) {
-    for (keys in opts) {
-      this[keys] = opts[keys];
-    }
-  }
 
   Project.projectsArray = [];
 
@@ -51,28 +46,7 @@
     }
   };
 
-//class 07 work
-//i'm setting funFacts.json into local storage
-  FunFacts.getFunFacts = function() {
-    $.getJSON ('js/funFacts.json', function (data) {
-      FunFacts.loadFunFacts(data);
-      console.log('is getfunfacts working?');
-    });
-  };
-
-  //empty array attached to FunFacts object
-  FunFacts.allFunFacts = [];
-
-  //create the array
-  FunFacts.loadFunFacts = function(inputData) {
-    FunFacts.allFunFacts = inputData.sort(function(a,b) {
-      return parseInt(a.year) - parseInt(b.year);
-    });
-    console.log(FunFacts.allFunFacts);
-  };
-
-
-//attaches to section in DOM
+  //attaches to section in DOM
   projectView.render = function(){
     Project.projectsArray.forEach(function(a) {
       $('#projectlist').append(a.toHtml());
@@ -80,39 +54,68 @@
   };
 
   Project.fetchAll();
+}) (window);
+
+//class 07 work
+
+//object constructor
+function FunFacts (opts) {
+  for (keys in opts) {
+    this[keys] = opts[keys];
+  }
+}
+FunFacts.getFunFacts = function() {
+  $.getJSON ('js/funFacts.json', function (data) {
+    FunFacts.loadFunFacts(data);
+    console.log('is getfunfacts working?');
+  });
+};
+
+FunFacts.getFunFacts();
+
+//empty array attached to FunFacts object
+FunFacts.allFunFacts = [];
+
+//create the array
+FunFacts.loadFunFacts = function(inputData) {
+  FunFacts.allFunFacts = inputData.sort(function(a,b) {
+    return parseInt(a.year) - parseInt(b.year);
+  });
+  console.log(FunFacts.allFunFacts);
+};
+FunFacts.loadFunFacts();
 
 
 //adding data attributes to my home and about sections
-  $('.aboutmesection').attr('data','about_section');
-  $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
+$('.aboutmesection').attr('data','about_section');
+$('section:not(.aboutmesection)').attr('data', 'portfolio_links');
 //MEGAN: Might as well do this in the HTML
 
 //click function to show about section on about
-  clickAbout = function(){
-    $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
-      $('h2').text('About Me');
-      $('section[data="about_section"]').show();
-      $('section:not(.aboutmesection)').hide();
+clickAbout = function(){
+  $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
+    $('h2').text('About Me');
+    $('section[data="about_section"]').show();
+    $('section:not(.aboutmesection)').hide();
 
-    });
-  };
+  });
+};
 
 //click function to go home when clicking home
-  clickHome = function(){
-    $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
-      $('h2').text('Code 201 Projects');
-      $('section[data="portfolio_links"]').show();
-      $('section[data="about_section"]').hide();
-    });
-  };
+clickHome = function(){
+  $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
+    $('h2').text('Code 201 Projects');
+    $('section[data="portfolio_links"]').show();
+    $('section[data="about_section"]').hide();
+  });
+};
 
 //click function for hamburger at <400px to display the menu when clicked on
-  $('.hamburger').click(function(){
-    $('table').toggle('fast');
-  });
+$('.hamburger').click(function(){
+  $('table').toggle('fast');
+});
 
 
 
-  clickAbout();
-  clickHome();
-}) (window);
+clickAbout();
+clickHome();
