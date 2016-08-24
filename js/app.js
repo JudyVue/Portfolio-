@@ -68,10 +68,9 @@ FunFacts.getFunFacts = function() {
   $.getJSON ('js/funFacts.json', function (data) {
     FunFacts.loadFunFacts(data);
     console.log('is getfunfacts working?');
+    console.log(FunFacts.allFunFacts);
   });
 };
-
-FunFacts.getFunFacts();
 
 //empty array attached to FunFacts object
 FunFacts.allFunFacts = [];
@@ -81,9 +80,25 @@ FunFacts.loadFunFacts = function(inputData) {
   FunFacts.allFunFacts = inputData.sort(function(a,b) {
     return parseInt(a.year) - parseInt(b.year);
   });
-  console.log(FunFacts.allFunFacts);
 };
-FunFacts.loadFunFacts();
+
+
+FunFacts.getCountries = function () {
+  return FunFacts.allFunFacts.map(function(currentObject) {
+    return currentObject.country;
+  });
+  // }).reduce(function(array, current) {
+  //   if (array.indexOf(current) === -1) {
+  //     array.push(current);
+  //   }
+  //   console.log(array);
+  //   return array;
+  // }, []);
+  console.log(currentObject.country);
+};
+FunFacts.getFunFacts();
+FunFacts.getCountries();
+
 
 
 //adding data attributes to my home and about sections
