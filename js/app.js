@@ -70,8 +70,7 @@
   FunFacts.getFunFacts = function() {
     $.getJSON ('data/funFacts.json', function (data) {
       FunFacts.loadFunFacts(data);
-      FunFacts.getCountries();
-      console.log(FunFacts.countries + ' is the array of countries I need to display via handlebars');
+      // FunFacts.getCountries();
       aboutMeView.render();
     });
   };
@@ -93,6 +92,7 @@
         console.log(array);
       }
       FunFacts.countries = array;
+      console.log(FunFacts.countries);
       return array;
     }, []);
   };
@@ -102,20 +102,29 @@
 
   FunFacts.getFunFacts();
 
-  //using handlebars to render countries to about page
-
-  FunFacts.prototype.funFactstoHtml = function() {
-    var source = ($('#aboutme_template').html());
-    var aboutMeRender = Handlebars.compile(source);
-    return aboutMeRender(this);
-  };
-
+  // using handlebars to render countries to about page
   aboutMeView.render = function() {
-    FunFacts.countries.forEach(function(a){
-      $('.countries').append(a.toHtml());
+    var countriesRender = Handlebars.compile($('#aboutme_template').html());
+    FunFacts.allFunFacts.forEach(function(country) {
+      $('.aboutmesection').append(countriesRender(country));
+
     });
   };
 
+
+
+  // FunFacts.prototype.funFactstoHtml = function(){
+  //   var source = $('#aboutme_template').html();
+  //   var templateRender = Handlebars.compile(source);
+  //   return templateRender(this);
+  // };
+  //
+  // aboutMeView.render = function(){
+  //   FunFacts.allFunFacts.forEach(function(a) {
+  //     console.log('whats going on?');
+  //     $('.aboutmesection').append(a.funFactstoHtml());
+  //   });
+  // };
 
 
 
