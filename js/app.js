@@ -22,7 +22,6 @@
     var source = $('#projectlist-template').html();
     var templateRender = Handlebars.compile(source);
     return templateRender(this);
-
   };
 
   Project.loadAll = function(inputData) {
@@ -66,12 +65,14 @@
 
   //empty array attached to FunFacts object
   FunFacts.allFunFacts = [];
+  FunFacts.countries = [];
 
   FunFacts.getFunFacts = function() {
     $.getJSON ('data/funFacts.json', function (data) {
       FunFacts.loadFunFacts(data);
-      console.log(FunFacts.allFunFacts);
       FunFacts.getCountries();
+      console.log(FunFacts.countries + ' is the array of countries I need to display via handlebars');
+      aboutMeView.render();
     });
   };
 
@@ -80,7 +81,6 @@
     FunFacts.allFunFacts = inputData.sort(function(a,b) {
       return parseInt(a.year) - parseInt(b.year);
     });
-    console.log(FunFacts.allFunFacts);
   };
 
   FunFacts.getCountries = function () {
@@ -92,18 +92,29 @@
         array.push(country);
         console.log(array);
       }
+      FunFacts.countries = array;
       return array;
     }, []);
   };
 
 
+  var aboutMeView = {};
+
   FunFacts.getFunFacts();
 
-  //using handlebars to render countries to aboute page
-  projectView.renderAboutSection = function() {
-    var countriesRender = Handlebars.compile($('aboutme_template').html());
-  }
+  //using handlebars to render countries to about page
 
+  FunFacts.prototype.funFactstoHtml = function() {
+    var source = ($('#aboutme_template').html());
+    var aboutMeRender = Handlebars.compile(source);
+    return aboutMeRender(this);
+  };
+
+  aboutMeView.render = function() {
+    FunFacts.countries.forEach(function(a){
+      $('.countries').append(a.toHtml());
+    });
+  };
 
 
 
