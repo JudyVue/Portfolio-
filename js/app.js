@@ -54,83 +54,92 @@
   };
 
   Project.fetchAll();
-}) (window);
 
 //class 07 work
 
 //object constructor
-function FunFacts (opts) {
-  for (keys in opts) {
-    this[keys] = opts[keys];
+  function FunFacts (opts) {
+    for (keys in opts) {
+      this[keys] = opts[keys];
+    }
   }
-}
-FunFacts.getFunFacts = function() {
-  $.getJSON ('js/funFacts.json', function (data) {
-    FunFacts.loadFunFacts(data);
-    console.log('is getfunfacts working?');
+
+  //empty array attached to FunFacts object
+  FunFacts.allFunFacts = [];
+
+  FunFacts.getFunFacts = function() {
+    $.getJSON ('data/funFacts.json', function (data) {
+      FunFacts.loadFunFacts(data);
+      console.log(FunFacts.allFunFacts);
+      FunFacts.getCountries();
+    });
+  };
+
+  //sort array according to date
+  FunFacts.loadFunFacts = function(inputData) {
+    FunFacts.allFunFacts = inputData.sort(function(a,b) {
+      return parseInt(a.year) - parseInt(b.year);
+    });
     console.log(FunFacts.allFunFacts);
+  };
+
+  FunFacts.getCountries = function () {
+    // FunFacts.getFunFacts();
+    FunFacts.allFunFacts.map(function(currentObject) {
+      return currentObject.country;
+    }).reduce(function(array, country) {
+      if (array.indexOf(country) === -1) {
+        array.push(country);
+        console.log(array);
+      }
+      return array;
+    }, []);
+  };
+
+
+  FunFacts.getFunFacts();
+
+  //using handlebars to render countries to aboute page
+  projectView.renderAboutSection = function() {
+    var countriesRender = Handlebars.compile($('aboutme_template').html());
+  }
+
+
+
+
+
+  //adding data attributes to my home and about sections
+  $('.aboutmesection').attr('data','about_section');
+  $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
+  //MEGAN: Might as well do this in the HTML
+
+  //click function to show about section on about
+  clickAbout = function(){
+    $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
+      $('h2').text('About Me');
+      $('section[data="about_section"]').show();
+      $('section:not(.aboutmesection)').hide();
+
+    });
+  };
+
+  //click function to go home when clicking home
+  clickHome = function(){
+    $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
+      $('h2').text('Code 201 Projects');
+      $('section[data="portfolio_links"]').show();
+      $('section[data="about_section"]').hide();
+    });
+  };
+
+  //click function for hamburger at <400px to display the menu when clicked on
+  $('.hamburger').click(function(){
+    $('table').toggle('fast');
   });
-};
-
-//empty array attached to FunFacts object
-FunFacts.allFunFacts = [];
-
-//create the array
-FunFacts.loadFunFacts = function(inputData) {
-  FunFacts.allFunFacts = inputData.sort(function(a,b) {
-    return parseInt(a.year) - parseInt(b.year);
-  });
-};
-
-
-FunFacts.getCountries = function () {
-  return FunFacts.allFunFacts.map(function(currentObject) {
-    return currentObject.country;
-  });
-  // }).reduce(function(array, current) {
-  //   if (array.indexOf(current) === -1) {
-  //     array.push(current);
-  //   }
-  //   console.log(array);
-  //   return array;
-  // }, []);
-  console.log(currentObject.country);
-};
-FunFacts.getFunFacts();
-FunFacts.getCountries();
 
 
 
-//adding data attributes to my home and about sections
-$('.aboutmesection').attr('data','about_section');
-$('section:not(.aboutmesection)').attr('data', 'portfolio_links');
-//MEGAN: Might as well do this in the HTML
+  clickAbout();
+  clickHome();
 
-//click function to show about section on about
-clickAbout = function(){
-  $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
-    $('h2').text('About Me');
-    $('section[data="about_section"]').show();
-    $('section:not(.aboutmesection)').hide();
-
-  });
-};
-
-//click function to go home when clicking home
-clickHome = function(){
-  $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
-    $('h2').text('Code 201 Projects');
-    $('section[data="portfolio_links"]').show();
-    $('section[data="about_section"]').hide();
-  });
-};
-
-//click function for hamburger at <400px to display the menu when clicked on
-$('.hamburger').click(function(){
-  $('table').toggle('fast');
-});
-
-
-
-clickAbout();
-clickHome();
+}) (window);
