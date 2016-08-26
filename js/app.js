@@ -65,9 +65,6 @@
     }
   }
 
-  //empty array attached to FunFacts object
-  FunFacts.allFunFacts = [];
-  FunFacts.countries = [];
 
 
   //TODO: So much to do here. I'm trying to reduce my funFacts data array so that only countries are pulled and the dups are taken out. I'm trying to get that into another object so that I can pull the 'country' property with Handlebars. I am temporarily defeated at the moment. I believe the FunFacts.getFunFacts function should be wrapped around EVERYTHING here. Will modify eventually.
@@ -76,22 +73,26 @@
 
     //TODO: Decide if I really need this AJAX/live-server data nonsense as it seems to be causing me more unwarranted headaches.
     $.getJSON ('data/funFacts.json', function (data) {
+      FunFacts.allFunFacts = [];
       FunFacts.loadFunFacts(data);
       FunFacts.render();
-      console.log(FunFacts.countries);
-      FunFacts.countries.forEach(function(country) {
+      FunFacts.countryNames = FunFacts.countries.map(function(country) {
+        console.log(country);
         return {
           countryName: country
         };
+      });
+      FunFacts.countryNames.forEach(function(country){
+        $('.countries').append(countriesRender(country));
       });
     });
   };
   //TODO: This is corpse code that I shall revive later once I get the above figured out. Zombies are cool.
 
-  // $('.aboutmesection').append(countriesRender(country));
 
 
   FunFacts.render = function() {
+    FunFacts.countries = [];
     FunFacts.allFunFacts.map(function(currentObject) {
       return currentObject.country;
     }).reduce(function(array, cur) {
