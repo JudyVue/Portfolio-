@@ -1,5 +1,6 @@
 (function(module){
 
+  //TODO: Find out from Rick/TA's what this empty object does exactly, because I'm actually not sure. I just adapted my code to one of his article examples, and it's still unclear to me what the purpose of this is.
   var projectView = {};
 
   function Project (opts) {
@@ -32,12 +33,13 @@
     });
   };
 
+  //TODO: I could probably get rid of this whole local storage nonsense for the sake of my portfolio's simplicity. Maybe?....
   Project.fetchAll = function() {
     if (localStorage.objects) {
       Project.loadAll(JSON.parse(localStorage.objects));
       projectView.render();
     } else {
-      $.getJSON ('js/objects.json', function (data) {
+      $.getJSON ('data/objects.json', function (data) {
         Project.loadAll(data);
         localStorage.objects = JSON.stringify(data);
         projectView.render();
@@ -67,12 +69,38 @@
   FunFacts.allFunFacts = [];
   FunFacts.countries = [];
 
+
+  //TODO: So much to do here. I'm trying to reduce my funFacts data array so that only countries are pulled and the dups are taken out. I'm trying to get that into another object so that I can pull the 'country' property with Handlebars. I am temporarily defeated at the moment. I believe the FunFacts.getFunFacts function should be wrapped around EVERYTHING here. Will modify eventually.
   FunFacts.getFunFacts = function() {
+    var countriesRender = Handlebars.compile($('#aboutme_template').html());
+
+    //TODO: Decide if I really need this AJAX/live-server data nonsense as it seems to be causing me more unwarranted headaches.
     $.getJSON ('data/funFacts.json', function (data) {
       FunFacts.loadFunFacts(data);
-      // FunFacts.getCountries();
-      aboutMeView.render();
+      FunFacts.render();
+      console.log(FunFacts.countries);
+      FunFacts.countries.forEach(function(country) {
+        return {
+          countryName: country
+        };
+      });
     });
+  };
+  //TODO: This is corpse code that I shall revive later once I get the above figured out. Zombies are cool.
+
+  // $('.aboutmesection').append(countriesRender(country));
+
+
+  FunFacts.render = function() {
+    FunFacts.allFunFacts.map(function(currentObject) {
+      return currentObject.country;
+    }).reduce(function(array, cur) {
+      if (array.indexOf(cur) === -1) {
+        array.push(cur);
+      }
+      FunFacts.countries = array;
+      return array;
+    }, []);
   };
 
   //sort array according to date
@@ -82,57 +110,17 @@
     });
   };
 
-  FunFacts.getCountries = function () {
-    // FunFacts.getFunFacts();
-    FunFacts.allFunFacts.map(function(currentObject) {
-      return currentObject.country;
-    }).reduce(function(array, country) {
-      if (array.indexOf(country) === -1) {
-        array.push(country);
-        console.log(array);
-      }
-      FunFacts.countries = array;
-      console.log(FunFacts.countries);
-      return array;
-    }, []);
-  };
 
-
-  var aboutMeView = {};
-
-  FunFacts.getFunFacts();
-
-  // using handlebars to render countries to about page
-  aboutMeView.render = function() {
-    var countriesRender = Handlebars.compile($('#aboutme_template').html());
-    FunFacts.allFunFacts.forEach(function(country) {
-      $('.aboutmesection').append(countriesRender(country));
-
-    });
-  };
-
-
-
-  // FunFacts.prototype.funFactstoHtml = function(){
-  //   var source = $('#aboutme_template').html();
-  //   var templateRender = Handlebars.compile(source);
-  //   return templateRender(this);
-  // };
-  //
-  // aboutMeView.render = function(){
-  //   FunFacts.allFunFacts.forEach(function(a) {
-  //     console.log('whats going on?');
-  //     $('.aboutmesection').append(a.funFactstoHtml());
-  //   });
-  // };
-
-
+  //TODO: Put this in a separate JS file for easier handling and referencing. All this was done around Day 2 or so when we were learning jQuery. Also, follow Megan's advice from Day 5 peer review.
 
   //adding data attributes to my home and about sections
-  $('.aboutmesection').attr('data','about_section');
-  $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
+  addDataAttributes = function() {
+    $('.aboutmesection').attr('data','about_section');
+    $('section:not(.aboutmesection)').attr('data', 'portfolio_links');
   //MEGAN: Might as well do this in the HTML
+  };
 
+  //TODO: Use 'this' keyword
   //click function to show about section on about
   clickAbout = function(){
     $('#about_td').on('click', function(){//MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
@@ -143,6 +131,7 @@
     });
   };
 
+  //TODO: Use 'this' keyword
   //click function to go home when clicking home
   clickHome = function(){
     $('#home_td').on('click', function(){ //MEGAN: I think you should use id's here. You want a unique selector that will always stay with this menu item even if you change the order of your navs
@@ -153,12 +142,14 @@
   };
 
   //click function for hamburger at <400px to display the menu when clicked on
+  //TODO: My hamburger menu still doesn't work. Figure out how to fix it. Also, do some fancy CSS stuff to truly make the site a mobile-friendly site first and foremost
   $('.hamburger').click(function(){
     $('table').toggle('fast');
   });
 
 
-
+  FunFacts.getFunFacts();
+  addDataAttributes();
   clickAbout();
   clickHome();
 
