@@ -159,8 +159,8 @@
 
   FunFacts.getFunFacts();
   addDataAttributes();
-  clickAbout();
-  clickHome();
-  clickFunny();
+  // clickAbout();
+  // clickHome();
+  // clickFunny();
 
 }) (window);
