@@ -2,9 +2,9 @@
   var aboutController = {};
 
   aboutController.reveal = function() {
-    $('.aboutmesection').show();
-    $('section').not('.aboutmesection').hide();
+    $('#aboutmesection').show();
+    $('section').not('#aboutmesection').hide();
   };
 
   module.aboutController = aboutController;
-})(window);s
+})(window);

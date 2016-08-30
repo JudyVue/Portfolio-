@@ -27,44 +27,47 @@
   <body>
     <img src="http://placehold.it/600x150">
     <nav>
-      <img src="img/menu.png" class="hamburger" href="">
+      <a href=""><img src="img/menu.png" class="hamburger"></a>
       <table>
         <tr>
-          <td id="home_td" href="#">Home</td>
-          <td id="about_td" href="#">About</td>
+          <td class="tab" data-content="projectlist"><a href="/">Home</td></a>
+          <td class="tab" data-content="aboutmesection" ><a href="/about">About</td></a>
+          <td class="tab" data-content="comedysection" ><a href="/comedy">Sometimes I'm Funny</td></a>
           <td><a href="https://github.com/judyvue" target="_blank">GitHub</td></a>
           <td><a href="https://www.linkedin.com/in/judyvue" target="_blank">LinkedIn</td></a>
-          <td id="comedy">Sometimes I'm Funny</td>
       </tr>
       </table>
     </nav>
 
-    <h2>Code 201 Projects</h2>
   <section id="projectlist">
+    <h2>Code 201 Projects</h2>
   </section>
 
-  <section class="aboutmesection">
+  <section id="aboutmesection">
+    <h2>About Me</h2>
     <p>Judy has an eclectic work history. She has worked in the following countries:</p>
     <ul class="countries">
     </ul>
   </section>
 
-  <section class="comedysection">
+  <section id="comedysection">
+    <h2>Please Laugh at My Comedy, not My Coding</h2>
     <iframe width="420" height="315" src="https://www.youtube.com/embed/ELTtkXmW1ik" frameborder="0" allowfullscreen></iframe>
   </section>
 
-  <!-- local third party vendor scripts -->
-  <script src="vendor/page.js"></script>
 
   <!-- third party CDN scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 
+  <!-- local third party vendor scripts -->
+  <script src="vendor/page.js"></script>
   <!-- local js scripts, to be renamed as Controller files eventually -->
-  <script src="controller/projectView.js"></script>
   <script src="controller/homeController.js"></script>
   <script src="controller/aboutController.js"></script>
   <script src="controller/funnyController.js"></script>
   <script src="controller/routes.js"></script>
+  <!-- view file -->
+  <script src="controller/projectView.js"></script>
   </body>
 </html>
