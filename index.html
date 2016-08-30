@@ -32,9 +32,9 @@
         <tr>
           <td class="tab" data-content="projectlist"><a href="/">Home</td></a>
           <td class="tab" data-content="aboutmesection" ><a href="/about">About</td></a>
-          <td class="tab" data-content="comedysection" ><a href="/comedy">Sometimes I'm Funny</td></a>
           <td><a href="https://github.com/judyvue" target="_blank">GitHub</td></a>
           <td><a href="https://www.linkedin.com/in/judyvue" target="_blank">LinkedIn</td></a>
+          <td class="tab" data-content="comedysection" ><a href="/comedy">Sometimes I'm Funny</td></a>
       </tr>
       </table>
     </nav>
@@ -62,12 +62,21 @@
 
   <!-- local third party vendor scripts -->
   <script src="vendor/page.js"></script>
-  <!-- local js scripts, to be renamed as Controller files eventually -->
+  <!-- github Token -->
+  <script src="githubToken.js"></script>
+
+  <!-- // Model Scripts -->
+  <script src="model/repo.js"></script>
+
+  <!-- Controller Scripts -->
   <script src="controller/homeController.js"></script>
   <script src="controller/aboutController.js"></script>
   <script src="controller/funnyController.js"></script>
   <script src="controller/routes.js"></script>
   <!-- view file -->
-  <script src="controller/projectView.js"></script>
+  <script src="view/projectView.js"></script>
+  <script src="view/aboutView.js"></script>
+  <script src="view/mobileView.js"></script>
+
   </body>
 </html>
