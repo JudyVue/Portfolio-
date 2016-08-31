@@ -10,8 +10,9 @@
       $.get('/github/users/JudyVue')
       .done(function(data){
         reposObject.allRepos = data;
-      })
-    ).done(callback);
+        console.log(reposObject.allRepos);
+        callback();
+      }));
   };
 
 
