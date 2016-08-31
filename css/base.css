@@ -42,6 +42,6 @@ img {
   display: none;
 }
 
-tr a:visited {
+td a:visited {
   color: inherit;
 }
