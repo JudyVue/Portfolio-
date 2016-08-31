@@ -8,7 +8,7 @@
 
   repoView.renderRepos = function() {
     $('#aboutmesection').append(repoCompiler(reposObject.allRepos)); // reposObject.allRepos is already an object, so just need to run Handlebars compile method on the object
-    $('.followers').append(reposObject.followers.map(followerCompiler));
+    $('#aboutmesection').append(reposObject.followers.map(followerCompiler));
   };
 
   reposObject.requestRepos(repoView.renderRepos);
