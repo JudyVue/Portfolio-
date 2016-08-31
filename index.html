@@ -28,7 +28,8 @@
       <p>Judy has {{followers}} followers and {{public_repos}} public repos. Check out the people she follows on Github.</p>
     </script>
     <script id="followers-template" type="text/x-handlebars-template">
-         <li>{{login}}</li>
+         <li><a href="{{html_url
+}}" target="_blank">{{login}}</li></a>
     </script>
   </head>
 
@@ -48,6 +49,7 @@
     </nav>
 
   <section id="projectlist">
+    <h1>TESTING TO FIX HEROKU LOCAL WEB</h1>
     <h2>Code 201 Projects</h2>
   </section>
 
