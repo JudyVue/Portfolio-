@@ -25,7 +25,10 @@
 
     <!-- extra template to diplay repo info -->
     <script id="repo-template" type="text/x-handlebars-template">
-      <p>Judy has {{followers}} followers and {{public_repos}} public repos on Github.</p>
+      <p>Judy has {{followers}} followers and {{public_repos}} public repos on Github. The four people she follows are:</p>
+       <ul>
+         <li>{{login}}</li>
+       </ul>
     </script>
   </head>
 
