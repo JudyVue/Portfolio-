@@ -1,6 +1,7 @@
 (function(module){
   var reposObject = {};
 
+
   reposObject.allRepos = [];
 
 
@@ -11,12 +12,14 @@
       type: 'GET',
       headers: {'Authorization': 'token ' + githubToken },
       success: function(data) {
-        console.log(data);
         reposObject.allRepos = data;
+        console.log(reposObject.allRepos);
         callback();
       }
     });
   };
-  reposObject.requestRepos();
 
+
+
+  module.reposObject = reposObject;
 })(window);

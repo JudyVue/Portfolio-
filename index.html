@@ -22,6 +22,11 @@
     <script id="aboutme_template" type="text/x-handlebars-template">
       <li>{{countryName}}</li>
     </script>
+
+    <!-- extra template to diplay repo info -->
+    <script id="repo-template" type="text/x-handlebars-template">
+      <p>Judy has {{followers}} followers and {{public_repos}} public repos on Github.</p>
+    </script>
   </head>
 
   <body>
@@ -77,6 +82,7 @@
   <script src="view/projectView.js"></script>
   <script src="view/aboutView.js"></script>
   <script src="view/mobileView.js"></script>
+  <script src="view/repoView.js"></script>
 
   </body>
 </html>

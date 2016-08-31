@@ -56,17 +56,7 @@
 
   Project.fetchAll();
 
-  requestRepos = function() {
-    $.ajax({
-      url: 'https://api.github.com/users/JudyVue',
-      type: 'GET',
-      headers: {'Authorization': 'token ' + githubToken },
-      success: function(data){
-        console.log(data);
-        reposObject.allRepos = data;
-      }
-    });
-  };
+  
 
 
 }) (window);
