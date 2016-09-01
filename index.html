@@ -23,13 +23,12 @@
       <li>{{countryName}}</li>
     </script>
 
-    <!-- extra template to diplay repo info -->
+    <!-- extra template to diplay repo API info -->
     <script id="repo-template" type="text/x-handlebars-template">
       <p>Judy has {{followers}} followers and {{public_repos}} public repos. Check out the people she follows on Github.</p>
     </script>
     <script id="followers-template" type="text/x-handlebars-template">
-         <li><a href="{{html_url
-}}" target="_blank">{{login}}</li></a>
+         <li><a href="{{html_url}}" target="_blank">{{login}}</li></a>
     </script>
   </head>
 
@@ -49,7 +48,6 @@
     </nav>
 
   <section id="projectlist">
-    <h1>TESTING TO FIX HEROKU LOCAL WEB</h1>
     <h2>Code 201 Projects</h2>
   </section>
 
@@ -57,8 +55,6 @@
     <h2>About Me</h2>
     <p>Judy has an eclectic work history. She has worked in the following countries:</p>
     <ul class="countries">
-    </ul>
-    <ul class="followers">
     </ul>
   </section>
 
