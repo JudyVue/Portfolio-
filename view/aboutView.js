@@ -1,23 +1,17 @@
 (function(module){
 
-//object constructor
-  function FunFacts (opts) {
-    for (keys in opts) {
-      this[keys] = opts[keys];
-    }
-  }
+  var FunFacts = {};
 
 
 
-  //TODO: DONE So much to do here. I'm trying to reduce my funFacts data array so that only countries are pulled and the dups are taken out. I'm trying to get that into another object so that I can pull the 'country' property with Handlebars. I am temporarily defeated at the moment. I believe the FunFacts.getFunFacts function should be wrapped around EVERYTHING here. Will modify eventually.
   FunFacts.getFunFacts = function() {
     var countriesRender = Handlebars.compile($('#aboutme_template').html());
 
-    //TODO: Decide if I really need this AJAX/live-server data nonsense as it seems to be causing me more unwarranted headaches.
     $.getJSON ('data/funFacts.json', function (data) {
       FunFacts.allFunFacts = [];
       FunFacts.loadFunFacts(data);
-      FunFacts.getCountiesWithNoDups();
+      FunFacts.getJobsWithNoDups();
+      FunFacts.getCountriesWithNoDups();
       FunFacts.countryNames = FunFacts.countries.map(function(country) {
         return {
           countryName: country
@@ -29,8 +23,27 @@
     });
   };
 
+// TODO: Find a way to render jobs to about me via Handlebars
+  FunFacts.getJobsWithNoDups = function() {
+    FunFacts.jobs = [];
+    console.log(FunFacts.allFunFacts);
+    FunFacts.allFunFacts.map(function(currentObject){
+      FunFacts.jobs.push(currentObject.job);
+      return currentObject.job;
+    });
+    FunFacts.jobsNoDups = FunFacts.jobs.filter(function(element, index){
+      return FunFacts.jobs.indexOf(element) === index;
+    });
+    FunFacts.jobsToRender = FunFacts.jobsNoDups.map(function(job){
+      console.log(job);
+      return {
+        jobName: job
+      };
+    });
+  };
 
-  FunFacts.getCountiesWithNoDups = function() {
+
+  FunFacts.getCountriesWithNoDups = function() {
     FunFacts.countries = [];
     FunFacts.allFunFacts.map(function(currentObject) {
       return currentObject.country;

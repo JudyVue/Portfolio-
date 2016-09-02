@@ -23,12 +23,12 @@
       <li>{{countryName}}</li>
     </script>
 
-    <!-- extra template to diplay repo info -->
+    <!-- extra template to diplay repo API info -->
     <script id="repo-template" type="text/x-handlebars-template">
-      <p>Judy has {{followers}} followers and {{public_repos}} public repos on Github. The four people she follows are:</p>
-       <ul>
-         <li>{{login}}</li>
-       </ul>
+      <p>Judy has {{followers}} followers and {{public_repos}} public repos. Check out the people she follows on Github.</p>
+    </script>
+    <script id="followers-template" type="text/x-handlebars-template">
+         <li><a href="{{html_url}}" target="_blank">{{login}}</li></a>
     </script>
   </head>
 
